@@ -5,7 +5,6 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const path = require("path");
-const port = process.env.PORT || 3000; // this can be very useful if you deploy to Heroku!
 
 // loggin middleware
 app.use(morgan("dev"));
@@ -29,8 +28,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500).send(err.message || "Internal server error.");
 });
 
-app.listen(port, function() {
-  console.log("Knock, knock");
-  console.log("Who's there?");
-  console.log(`Your server, listening on port ${port}`);
-});
+module.exports = app;
